@@ -1,7 +1,6 @@
 import {showHealth} from '../app.js';
 import {getRaiting} from '../app.js';
-import {getMax} from '../app.js';
-import {raiting} from '../app.js';
+
 
 test("show person's health", ()=> {
   const swordsman = {
@@ -30,17 +29,14 @@ test ("function can change object", ()=>{
     {name: 'маг', health: 100},
     {name: 'лучник', health: 80}
   ]
-  expect(getRaiting(persons)).toBe(raiting)
-})
-
-test("getMax don't take string",()=> {
-  let persons = [
-    {name: 'мечник', health: "jjj"},
+  let raiting = [
+    { name: 'маг', health: 100 },
+    { name: 'лучник', health: 80 },
+    { name: 'мечник', health: 10 }
   ]
-  let healthes = persons.map(elem => elem.health);
-
-  expect(getMax(healthes)).toBeUndefined();
+  expect(getRaiting(persons)).toEqual(raiting)
 })
+
 
 
 

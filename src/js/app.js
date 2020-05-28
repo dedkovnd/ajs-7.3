@@ -14,26 +14,20 @@ export function showHealth(person) {
   }
 }
 
-let persons = [];
-let personsMap = persons.map(person => person);
-let raiting = [];
-let healthes = persons.map(elem => elem.health);
 
-export function getMax (healthes){
-  let max = Math.max.apply(null, healthes);
-  let index = healthes.indexOf(max);
-  healthes.splice(index,1)
-  raiting.push(personsMap[index])
-  personsMap.splice(index,1)
-  if (personsMap.length > 0) {
-    getRaiting(personsMap);
+
+export function getRaiting(persons) {
+  let raiting = [];
+  let personsMap = persons.map(person => person);
+  let healthes = persons.map(elem => elem.health);
+
+  for (let i = 0; i < personsMap.length + 2; i++) {
+    let max = Math.max.apply(null, healthes);
+    let index = healthes.indexOf(max);
+    healthes.splice(index,1)
+    raiting.push(personsMap[index])
+    personsMap.splice(index,1)
   }
+  return raiting
 }
-
-export function getRaiting(personsMap) {
-  if (personsMap.length > 0) {
-    getMax(healthes);
-  }
-}
-
 
